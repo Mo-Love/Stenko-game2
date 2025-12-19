@@ -161,30 +161,56 @@ function drawBackground() {
 function drawScore() {
     ctx.fillStyle = "#FFF";
     ctx.strokeStyle = "#000";
+    ctx.textAlign = "center"; // Ця команда автоматично центрує текст
     
     if(gameState === 'playing') {
         ctx.font = "30px Impact";
         ctx.lineWidth = 2;
-        ctx.fillText("SCORE: " + score, 10, 40);
-        ctx.strokeText("SCORE: " + score, 10, 40);
+        // Виводимо рахунок по центру зверху
+        ctx.fillText(score, canvas.width / 2, 50);
+        ctx.strokeText(score, canvas.width / 2, 50);
+        
+        // Скидаємо вирівнювання для інших елементів (якщо потрібно)
+        ctx.textAlign = "start"; 
     } else if (gameState === 'gameover') {
         ctx.fillStyle = "rgba(0,0,0,0.5)";
         ctx.fillRect(0,0,canvas.width, canvas.height);
 
         ctx.fillStyle = "#FFF";
+        ctx.textAlign = "center";
+        
         ctx.font = "40px Impact";
-        ctx.fillText("GAME OVER", 110, 200);
+        ctx.fillText("GAME OVER", canvas.width / 2, 200);
+        
         ctx.font = "25px Impact";
-        ctx.fillText("Score: " + score, 155, 240);
-        ctx.fillText("Click to restart", 130, 300);
-    } else if (gameState === 'start') {
-        ctx.font = "40px Impact";
-        ctx.fillText("BEER JUMP", 115, 220);
+        ctx.fillText("Рахунок: " + score, canvas.width / 2, 240);
+        
         ctx.font = "20px Tahoma";
-        ctx.fillText("Tap or SPACE to start", 110, 260);
-    }
-}
+        ctx.fillText("Клікни, щоб почати знову", canvas.width / 2, 300);
+    } else if (gameState === 'start') {
+        ctx.fillStyle = "#FFD700"; // Золотий колір для заголовка
+        ctx.strokeStyle = "#000";
+        ctx.lineWidth = 2;
+        ctx.textAlign = "center";
 
+        // Перший рядок назви
+        ctx.font = "40px Impact";
+        ctx.fillText("САЄНКО", canvas.width / 2, 180);
+        ctx.strokeText("САЄНКО", canvas.width / 2, 180);
+
+        // Другий рядок назви (меншим шрифтом, щоб влізло)
+        ctx.font = "24px Impact";
+        ctx.fillStyle = "#FFF";
+        ctx.fillText("ЧУГАЇВСЬКИЙ ЛЕТЮЧИЙ ВОЇН", canvas.width / 2, 220);
+        ctx.strokeText("ЧУГАЇВСЬКИЙ ЛЕТЮЧИЙ ВОЇН", canvas.width / 2, 220);
+
+        ctx.font = "20px Tahoma";
+        ctx.fillStyle = "#FFF";
+        ctx.fillText("Тисни пробіл або екран", canvas.width / 2, 280);
+    }
+    // Повертаємо стандартне вирівнювання, щоб не зламати іншу логіку
+    ctx.textAlign = "start";
+}
 // === ГОЛОВНИЙ ЦИКЛ ГРИ ===
 function loop() {
     // Очищення екрану перед кожним кадром
