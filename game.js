@@ -173,20 +173,26 @@ function drawScore() {
         // Скидаємо вирівнювання для інших елементів (якщо потрібно)
         ctx.textAlign = "start"; 
     } else if (gameState === 'gameover') {
+        // Темний фон
         ctx.fillStyle = "rgba(0,0,0,0.5)";
         ctx.fillRect(0,0,canvas.width, canvas.height);
 
         ctx.fillStyle = "#FFF";
         ctx.textAlign = "center";
         
+        // Великий напис
         ctx.font = "40px Impact";
-        ctx.fillText("GAME OVER", canvas.width / 2, 200);
+        ctx.fillText("ОЙ, ВСЕ!", canvas.width / 2, 180); // Можна залишити GAME OVER, якщо хочете
         
-        ctx.font = "25px Impact";
-        ctx.fillText("Рахунок: " + score, canvas.width / 2, 240);
+        // Ваша фраза про пляшки
+        ctx.font = "22px Impact";
+        ctx.fillText("Саєнко випив " + score + " пляшок", canvas.width / 2, 230);
         
+        // Підказка про рестарт
         ctx.font = "20px Tahoma";
         ctx.fillText("Клікни, щоб почати знову", canvas.width / 2, 300);
+        
+    } else if (gameState === 'start') {
     } else if (gameState === 'start') {
         ctx.fillStyle = "#FFD700"; // Золотий колір для заголовка
         ctx.strokeStyle = "#000";
