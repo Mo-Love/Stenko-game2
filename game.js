@@ -37,8 +37,8 @@ setTimeout(() => { sprites.isLoaded = true; }, 1000);
 const player = {
     x: 50,
     y: 150,
-    width: 32,  // Приблизний розмір піксельного героя
-    height: 32,
+    width: 50,  // Приблизний розмір піксельного героя
+    height: 50,
     velocity: 0,
     gravity: 0.25,
     jumpStrength: -4.5,
